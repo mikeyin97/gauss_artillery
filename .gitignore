@@ -35,8 +35,4 @@
 .vscode/.browse.c_cpp.db*
 .vscode/c_cpp_properties.json
 .vscode/launch.json
-<<<<<<< HEAD
 .vscode
-=======
-.vscode/*.db
->>>>>>> fc77f414938a7119e092f8671491431448bc354b
