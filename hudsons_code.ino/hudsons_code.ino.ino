@@ -1,12 +1,12 @@
-#include <Arduino.h>
-#include <functions.h>
+//#include <Arduino.h>
+//#include <../functions.h>
 // #include <../lib/AccelStepper.h>
 
 void setup() {
   Serial.begin(9600);
   pinMode(8, OUTPUT);
   Serial.println("Done Setup");
-  add(1, 2); // test function
+  //add(1, 2); // test function
 }
 
 void loop() {
@@ -21,3 +21,4 @@ void loop() {
     }
   }
 }
+
