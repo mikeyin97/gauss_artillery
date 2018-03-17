@@ -2,9 +2,11 @@
 #include <functions.h>
 #include <../lib/AccelStepper.h>
 
+const int triggerPin = 8;
+
 void setup() {
   Serial.begin(9600);
-  pinMode(8, OUTPUT);
+  pinMode(triggerPin, OUTPUT);
   Serial.println("Done Setup");
   add(1, 2); // test function
 }
@@ -15,9 +17,9 @@ void loop() {
     Serial.println(firetime);
     if (Serial.read() == '\n') {
       Serial.println(firetime);
-      digitalWrite(8, HIGH);
+      digitalWrite(triggerPin, HIGH);
       delayMicroseconds(firetime);
-      digitalWrite(8, LOW);
+      digitalWrite(triggerPin, LOW);
     }
   }
 }
