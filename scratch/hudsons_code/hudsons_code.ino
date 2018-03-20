@@ -11,15 +11,13 @@ void setup() {
 }
 
 void loop() {
-  float division = 19.0;
-  float volt_factor = 5.0/1023.0;
   float voltage = 0;
   while (Serial.available() > 0) {
     int firetime = Serial.parseInt();
     if (Serial.read() == '\n') {
       digitalWrite(5 ,HIGH);
       do {
-        voltage = analogRead(A0) * division * volt_factor;
+        voltage = cannonVoltage();
         Serial.println(voltage);
       } while(voltage > 68.0);
       digitalWrite(5, LOW);
