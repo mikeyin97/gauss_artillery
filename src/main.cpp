@@ -23,7 +23,7 @@ void loop() {
       do {
         voltage = cannonVoltage();
         Serial.println(voltage);
-      } while(voltage > 68.0);
+      } while(voltage > 66.0);
       digitalWrite(5, LOW);
       Serial.println("FIRING");
       Serial.println(firetime);
