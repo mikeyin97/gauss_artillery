@@ -3,6 +3,6 @@
 #include <Arduino.h>
 
 int add(int a, int b);
-int cannonVoltage();
+float cannonVoltage();
 
 #endif

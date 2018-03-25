@@ -5,8 +5,8 @@ int add(int a, int b) {
 	return a + b; // test func
 }
 
-int cannonVoltage() {
-	float division = 19.0;
-  	float volt_factor = 5.0/1023.0;
-	return analogRead(A0) * division * volt_factor;
+float cannonVoltage() {
+	float division = 22.15;
+  	float volt_factor = 5.0/1024.0;
+	return (float) analogRead(A0) * division * volt_factor;
 }
