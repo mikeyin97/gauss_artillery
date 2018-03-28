@@ -65,45 +65,43 @@ void stepperTest(AccelStepper stepper) {
 }
 
 void stepper_cannon_test(){
-  voltage = cannonVoltage();
-  Serial.print("Voltage: ");
-  Serial.println(voltage);
-  while (Serial.available() <= 0);
-  while (Serial.available() > 0) {
-    int firetime = Serial.parseInt();
-    if (Serial.read() == ' ') {
-      pan_angle = Serial.parseInt();
-      if (Serial.read() == ' ') {
-        tilt_angle = Serial.parseInt();
-        if (Serial.read() == '\n') {
-          Serial.print("Pan angle: ");
-          Serial.println(pan_angle);
-          Serial.print("Tilt angle: ");
-          Serial.println(tilt_angle);
-          pan_stepper.runToNewPosition(pan_angle);
-          tilt_stepper.runToNewPosition(tilt_angle);
-          delay(2000);
-          digitalWrite(discharge_pin, HIGH);
-          do {
-            voltage = cannonVoltage();
-            Serial.print("Voltage at firing: ");
-            Serial.println(voltage);
-          } while(voltage > 66.0);
-            digitalWrite(discharge_pin, LOW);
-            Serial.println("FIRING");
-            Serial.println(firetime);
-            digitalWrite(cannon_pin, HIGH);
-            delayMicroseconds(firetime);
-            digitalWrite(cannon_pin, LOW);
-          }
-      }
-	  else
-		Serial.println("Invalid format");
-    }
-	else
-		Serial.println("Invalid format");
-  }
-  delay(500);
+	Serial.println("STEPPER/CANNON TEST: INPUT FORMAT 'FIRETIME PAN_ANGLE TILT_ANGLE'");
+	while (Serial.available() <= 0){
+		voltage = cannonVoltage();
+		Serial.print("Voltage: ");
+		Serial.println(voltage);
+	}
+	while (Serial.available() > 0) {
+		int firetime = Serial.parseInt();
+		if (Serial.read() == ' ') {
+			pan_angle = Serial.parseInt();
+			if (Serial.read() == ' ') {
+				tilt_angle = Serial.parseInt();
+				if (Serial.read() == '\n') {
+					Serial.print("Pan angle: ");
+					Serial.println(pan_angle);
+					Serial.print("Tilt angle: ");
+					Serial.println(tilt_angle);
+					pan_stepper.runToNewPosition(pan_angle);
+					tilt_stepper.runToNewPosition(tilt_angle);
+					delay(2000);
+					digitalWrite(discharge_pin, HIGH);
+					do {
+					voltage = cannonVoltage();
+					Serial.print("Voltage at firing: ");
+					Serial.println(voltage);
+					} while(voltage > 66.0);
+					digitalWrite(discharge_pin, LOW);
+					Serial.println("FIRING");
+					Serial.println(firetime);
+					digitalWrite(cannon_pin, HIGH);
+					delayMicroseconds(firetime);
+					digitalWrite(cannon_pin, LOW);
+				}
+			}
+		}
+	}
+	delay(500);
 
 }
 

@@ -28,8 +28,8 @@ float cannonVoltage();
 void cannonTest();
 void set_up_steppers();
 void set_up_cannon();
-
 void stepperTest();
+void stepper_cannon_test();
 int deg2steps(float degrees);
 
 #endif
